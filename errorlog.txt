@@ -1,0 +1,2 @@
+[EL Info]: 2018-03-01 19:04:47.013--ServerSession(2075074394)--EclipseLink, version: Eclipse Persistence Services - 2.7.0.v20170811-d680af5
+[EL Info]: connection: 2018-03-01 19:04:47.29--ServerSession(2075074394)--/file:/C:/Users/Java User/eclipse-workspace/BandGoehring/target/classes/_BandGoehring login successful
