@@ -36,7 +36,7 @@ public class MarchingBandHelper {
 	
 	public List<MarchingBand> showAllMarchingBands() {
 		EntityManager em = emfactory.createEntityManager();
-		TypedQuery<MarchingBand> allResults = em.createQuery("select mb from MarchingBand mb", MarchingBand.class);
+		TypedQuery<MarchingBand> allResults = em.createQuery("select mb from MarchingBand mb where mb.bandType = 'marching'", MarchingBand.class);
 		List<MarchingBand> allMarchingBands = allResults.getResultList();
 		em.close();
 		return allMarchingBands;

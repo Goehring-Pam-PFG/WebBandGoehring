@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add a Marching Band</title>
+</head>
+<body>
+	<h2>Add a Marching Band</h2>
+	<form action="addMarchingBandServlet" method="post">
+		Band Name: <input type="text" name="bandName"><br /> Band
+		Location: <input type="text" name="bandLocation"><br />
+		Number of Members: <input type="text" name="numOfMembers"><br />
+		Band Level: <input type="radio" name="level" value="1">
+		Elementary <input type="radio" name="level" value="2"> Junior
+		High <input type="radio" name="level" value="3"> High School <br />
+		<br /> 
+		Has Props: <select name="hasProps">
+			<option value="false">Nope</option>
+			<option value="true">Sure</option>
+		</select> <br /> 
+		Type of Props: <input type="text" name="typesOfProps"><br />
+		Color Guard: <select name="hasColorGuard">
+			<option value="false">No</option>
+			<option value="true">Yes</option>
+		</select> <br /> <br /> 
+		<input type="submit" value="Add Marching Band">
+	</form>
+	<a href="index.html"> Back to Band Menu</a>
+	<br />
+	<a href="viewAllMarchingBandsServlet">View all Marching Bands</a>
+</body>
+</html>
