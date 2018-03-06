@@ -61,10 +61,17 @@ public class PepBand extends Band {
 		} else {
 			this.playingPosition = "standing";
 		}
-	}
+	} 
 
 	public void setEventId(int eventId) {
 		this.eventId = eventId;
+		//hard coded based on table setup
+		if (this.eventId < 5) {
+			this.playingPosition = "standing"; 
+		} else  {
+			this.playingPosition = "sitting"; 
+		} 
+		
 	}
 
 	public String getEventName() {

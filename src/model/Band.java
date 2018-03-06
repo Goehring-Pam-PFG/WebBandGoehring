@@ -25,7 +25,7 @@ public class Band {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "band_id")
-	private int bandId;
+	protected int bandId;
 	@Column(name = "num_of_members")
 	private int numOfMembers;
 	@Column(name = "name_of_band")

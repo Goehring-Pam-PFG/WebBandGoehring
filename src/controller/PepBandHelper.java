@@ -36,7 +36,7 @@ public class PepBandHelper {
 	
 	public List<PepBand> showAllPepBands() {
 		EntityManager em = emfactory.createEntityManager();
-		TypedQuery<PepBand> allResults = em.createQuery("select pb from PepBand pb", PepBand.class);
+		TypedQuery<PepBand> allResults = em.createQuery("select pb from PepBand pb where pb.bandType = 'pep'", PepBand.class);
 		List<PepBand> allPepBands = allResults.getResultList();
 		em.close();
 		return allPepBands;

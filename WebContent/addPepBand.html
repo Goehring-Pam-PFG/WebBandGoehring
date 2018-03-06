@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add a Pep Band</title>
+</head>
+<body>
+	<h2>Add a Pep Band</h2>
+	<form action="addPepBandServlet" method="post">
+		Band Name: <input type="text" name="bandName"><br /> Band
+		Location: <input type="text" name="bandLocation"><br />
+		Number of Members: <input type="text" name="numOfMembers"><br />
+		Band Level: <input type="radio" name="level" value="1">
+		Elementary <input type="radio" name="level" value="2"> Junior
+		High <input type="radio" name="level" value="3"> High School <br />
+		Type of Event: <select name="event">
+			<option value="1">Girl's Basketball</option>
+			<option value="2">Boy's Basketball</option>
+			<option value="3">Football</option>
+			<option value="4">Wrestling</option>
+			<option value="5">Homecoming</option>
+			<option value="6">District Finals</option>
+			<option value="7">Red Ribbon Week</option>
+		</select> 
+		<br />
+		<input type="submit" value="Add Pep Band">
+	</form>
+	<a href="index.html"> Back to Band Menu</a>
+	<br />
+	<a href="viewAllPepBandsServlet">View all Pep Bands</a>
+</body>
+</html>

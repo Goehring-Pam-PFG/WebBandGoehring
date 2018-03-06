@@ -16,7 +16,7 @@
 			<th>Band Name</th>
 			<th>Band Location</th>
 			<th>Number of Members</th>
-			<th>Band Level</th>
+			<th>Cost Of Participation</th>
 		</tr>
 
 		<c:forEach items="${requestScope.allBands}" var="currentBand">
@@ -25,6 +25,7 @@
 				<td>${currentBand.bandName}</td>
 				<td>${currentBand.bandLocation}</td>
 				<td>${currentBand.numOfMembers}</td>
+				<td>${currentBand.costOfParticipation}</td>
 			</tr>
 		</c:forEach>
 
