@@ -7,17 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Competition;
+
 /**
- * Servlet implementation class viewAllBandsServlet
+ * Servlet implementation class addCompetitionServlet
  */
-@WebServlet("/viewAllBandsServlet")
-public class viewAllBandsServlet extends HttpServlet {
+@WebServlet("/addCompetitionServlet")
+public class addCompetitionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public viewAllBandsServlet() {
+    public addCompetitionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,13 +29,7 @@ public class viewAllBandsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		BandHelper dao = new BandHelper();
-		request.setAttribute("allBands", dao.showAllBands());
-		if(dao.showAllBands().isEmpty()) {
-			request.setAttribute("allBands", " ");
-		}
-		
-		getServletContext().getRequestDispatcher("/viewAllConcertBands.jsp").forward(request, response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -41,7 +37,17 @@ public class viewAllBandsServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String competitionIdStr = request.getParameter("competition id");
+		String bandIdStr = request.getParameter("band id");  
+		
+		int competitionId = Integer.valueOf(competitionIdStr);
+		int bandId = Integer.valueOf(bandIdStr);
+ 
+		Competition li = new Competition(competitionId, bandId);
+		CompetitionHelper dao = new CompetitionHelper();
+		dao.insertCompetition(li);
+
+		getServletContext().getRequestDispatcher("/addCompetition.html").forward(request, response);
 	}
 
 }

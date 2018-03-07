@@ -5,9 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="myStyle.css">
 <title>List of Marching Bands</title>
 </head>
 <body>
+<img src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAlBAAAAJDM5Yzg5YzU3LWViMjEtNGUxNi1iMDhkLTc5ZTU1NzUyODA2MQ.png" alt="MarchingBand">
+<h2>View All Marching Bands</h2>
 <form method = "post" action = "modifyMarchingBandServlet">
 	<table>
 
@@ -36,5 +39,6 @@
 	<input type="submit" value="Delete Selected Marching Band" name="doThisToItem">
 	<input type="submit" value="Add New Marching Band" name="doThisToItem">
 	</form>
+	<a href="index.html"> Back to Band Home</a>
 </body>
 </html>

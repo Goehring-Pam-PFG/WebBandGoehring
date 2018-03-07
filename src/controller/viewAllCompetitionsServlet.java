@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class viewAllBandsServlet
+ * Servlet implementation class viewAllCompetitionsServlet
  */
-@WebServlet("/viewAllBandsServlet")
-public class viewAllBandsServlet extends HttpServlet {
+@WebServlet("/viewAllCompetitionsServlet")
+public class viewAllCompetitionsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public viewAllBandsServlet() {
+    public viewAllCompetitionsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,13 +27,13 @@ public class viewAllBandsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		BandHelper dao = new BandHelper();
-		request.setAttribute("allBands", dao.showAllBands());
-		if(dao.showAllBands().isEmpty()) {
-			request.setAttribute("allBands", " ");
+		CompetitionHelper dao = new CompetitionHelper();
+		request.setAttribute("allEntries", dao.showCompetitionRoster());
+		if (dao.showCompetitionRoster().isEmpty()) {
+			request.setAttribute("allEntries", " ");
 		}
-		
-		getServletContext().getRequestDispatcher("/viewAllConcertBands.jsp").forward(request, response);
+
+		getServletContext().getRequestDispatcher("/viewAllCompetitions.jsp").forward(request, response);
 	}
 
 	/**

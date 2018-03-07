@@ -33,7 +33,7 @@ public class viewAllPepBandsServlet extends HttpServlet {
 			request.setAttribute("allPepBands", " ");
 		}
 		
-		getServletContext().getRequestDispatcher("/pepbandlist.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/viewAllPepBands.jsp").forward(request, response);
 	}
 
 	/**

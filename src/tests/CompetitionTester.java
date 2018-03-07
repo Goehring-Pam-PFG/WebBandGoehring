@@ -12,7 +12,7 @@ public class CompetitionTester {
 	static CompetitionHelper ch = new CompetitionHelper();
 	
 	public static void main(String[] args) {
-		addCompetition();
+		//addCompetition();
 		viewCompetitionRoster();
 	}
 	

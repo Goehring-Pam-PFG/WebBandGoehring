@@ -5,9 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="myStyle.css">
 <title>List of Pep Bands</title>
 </head>
 <body>
+<h2>View All Pep Bands</h2>
+<img src="http://wsh.wrdsb.ca/files/2013/04/jazz-band.jpg">
 <form method = "post" action = "modifyPepBandServlet">
 	<table>
 
@@ -34,5 +37,6 @@
 	<input type="submit" value="Delete Selected Pep Band" name="doThisToItem">
 	<input type="submit" value="Add New Pep Band" name="doThisToItem">
 	</form>
+	<a href="index.html"> Back to Band Home</a>
 </body>
 </html>

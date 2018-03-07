@@ -33,7 +33,7 @@ public class viewAllMarchingBandsServlet extends HttpServlet {
 			request.setAttribute("allMarchingBands", " ");
 		}
 		
-		getServletContext().getRequestDispatcher("/marchingbandlist.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/viewAllMarchingBands.jsp").forward(request, response);
 	}
 
 	/**

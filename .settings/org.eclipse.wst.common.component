@@ -2,6 +2,7 @@
     <wb-module deploy-name="WebBandGoehring">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Images"/>
         <property name="context-root" value="WebBandGoehring"/>
         <property name="java-output-path" value="/WebBandGoehring/target/classes"/>
     </wb-module>

@@ -5,9 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="myStyle.css">
 <title>List of Bands</title>
 </head>
 <body>
+<img src="http://hddfhm.com/images/concert-band-clipart-18.png">
+<h2>View All Concert Bands</h2>
 <form method = "post" action = "modifyBandServlet">
 	<table>
 
@@ -34,5 +37,6 @@
 	<input type="submit" value="Delete Selected Band" name="doThisToItem">
 	<input type="submit" value="Add New Band" name="doThisToItem">
 	</form>
+	<a href="index.html"> Back to Band Home</a>
 </body>
 </html>
