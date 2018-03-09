@@ -13,7 +13,7 @@ public class CompetitionTester {
 	
 	public static void main(String[] args) {
 		//addCompetition();
-		viewCompetitionRoster();
+		viewCompetitionRosterUsingJPA();
 	}
 	
 	
@@ -22,9 +22,10 @@ public class CompetitionTester {
 		ch.insertCompetition(addCompetition);
 	}
 	
-	private static void viewCompetitionRoster() {
+	
+	private static void viewCompetitionRosterUsingJPA() {
 		List<Competition> allItems = ch.showAllCompetition();
-		System.out.println("---------------------------------------------------------------------------------------------------------");
+		System.out.println("--------Using JPAs-----------------------------------------------------------------------------");
 		for (Competition roster : allItems) {
 			System.out.println(roster.toString());
 		}

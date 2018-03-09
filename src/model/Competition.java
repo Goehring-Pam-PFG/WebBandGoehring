@@ -3,10 +3,11 @@ package model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-@Entity
+@Entity @IdClass(CompetitionId.class)
 @Table(name = "participating_bands")
 
 public class Competition {
@@ -14,6 +15,7 @@ public class Competition {
 	@Column(name = "competition_id")
 	private int competitionId;
 	//private String eventName;
+	@Id
 	@Column(name="band_id")
 	private int bandId; 
 	@Transient
@@ -70,7 +72,6 @@ public class Competition {
 		//this would work if we had extended competition...then we can get band name - but for now just displaying id
 		//return "Attending " + competitionDescription  + " is " + super.bandNameReport() +".";
 	}
-	
 	
 
 }

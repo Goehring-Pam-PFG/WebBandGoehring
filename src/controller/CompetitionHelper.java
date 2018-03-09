@@ -29,57 +29,17 @@ public class CompetitionHelper {
 		em.close();
 	}
 	
+
 	public List<Competition> showAllCompetition() {
-		EntityManager em = emfactory.createEntityManager();
-		
-		ArrayList<Competition> all = new ArrayList<Competition>();
-		
-		String url = "jdbc:mysql://localhost:3306/finearts";
-		String user = "root";
-		String password = "java1718";
-		Connection con = null;
-		String q = "select * from participating_bands";
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection(url, user, password);
-			
-			
-			Statement st = (Statement) con.createStatement();
-			ResultSet rs = st.executeQuery(q);
-			
-			while(rs.next()) {
-				String compId = rs.getString(1);
-				String bandId = rs.getString(2);
-				
-				Competition c = new Competition(Integer.parseInt(compId), Integer.parseInt(bandId));
-				all.add(c);
-			}
-		}
-		catch(Exception ex) {
-			System.out.println("horrible");
-		}
-	
-	//	List<Competition> allCompetition = allResults.getResultList();
-//		System.out.println("From showAllCompetition method in Competition Helper");
-//		for (Competition a: allCompetition) {
-//			System.out.println(a.toString());
-//		}
-		em.close();
-		return all;
-	}
-	
-	
-	
-	public List<Competition> showAllCompetition2() {
 		EntityManager em = emfactory.createEntityManager();
 		
 	TypedQuery<Competition> allResults = em.createQuery("Select c from Competition c", Competition.class);
 	
 		List<Competition> allCompetition = allResults.getResultList();
-		System.out.println("From showAllCompetition method in Competition Helper");
-		for (Competition a: allCompetition) {
-			System.out.println(a.toString());
-		}
+//		System.out.println("From showAllCompetition method in Competition Helper");
+//		for (Competition a: allCompetition) {
+//			System.out.println(a.toString());
+//		}
 		em.close();
 		return allCompetition;
 	}
