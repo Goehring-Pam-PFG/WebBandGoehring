@@ -38,6 +38,7 @@ public class modifyMarchingBandServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MarchingBandHelper dao = new MarchingBandHelper();
 		String act = request.getParameter("doThisToItem");
+		System.out.println("here I am act:" + act);
 		
 		if(act == null) {
 			//no button has been selected
@@ -48,9 +49,10 @@ public class modifyMarchingBandServlet extends HttpServlet {
 			dao.deleteMarchingBand(marchingBandToDelete);
 			getServletContext().getRequestDispatcher("/viewAllMarchingBandsServlet").forward(request, response);
 		} else if (act.equals("Edit Selected Marching Band")) {
+			System.out.println("I'm in the edit mode");
 			Integer tempId = Integer.parseInt(request.getParameter("id"));
 			MarchingBand marchingBandToEdit = dao.searchForMarchingBandById(tempId);
-			request.setAttribute("marchingBandToEdit", marchingBandToEdit);		
+			request.setAttribute("marchingBandToEdit", marchingBandToEdit);	
 			getServletContext().getRequestDispatcher("/editMarchingBand.jsp").forward(request, response);
 		} else if (act.equals("Add New Marching Band")) {
 			getServletContext().getRequestDispatcher("/addMarchingBand.html").forward(request, response);

@@ -37,8 +37,8 @@ public class addCompetitionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String competitionIdStr = request.getParameter("competition id");
-		String bandIdStr = request.getParameter("band id");  
+		String competitionIdStr = request.getParameter("competitionId");
+		String bandIdStr = request.getParameter("bandId");  
 		
 		int competitionId = Integer.valueOf(competitionIdStr);
 		int bandId = Integer.valueOf(bandIdStr);

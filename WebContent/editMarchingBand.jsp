@@ -13,7 +13,7 @@
 Band Name: <input type="text" name="bandName" value="${marchingBandToEdit.bandName}">
 Band Location: <input type="text" name="bandLocation" value="${marchingBandToEdit.bandLocation}">
 Number of Members: <input type="text" name="numOfMembers" value="${marchingBandToEdit.numOfMembers}">
-Types of Props: <input type="text" name="Types of Props" value="${marchingBandToEdit.typesOfProps }"> 
+Types of Props: <input type="text" name="TypeofProps" value="${marchingBandToEdit.typesOfProps}"> 
 
 <input type="hidden" name="id" value="${marchingBandToEdit.bandId}">
 <input type="submit" value="Save Edited Marching Band">

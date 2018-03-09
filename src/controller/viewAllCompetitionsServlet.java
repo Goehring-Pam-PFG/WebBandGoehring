@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Competition;
+
 /**
  * Servlet implementation class viewAllCompetitionsServlet
  */
@@ -28,11 +30,17 @@ public class viewAllCompetitionsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		CompetitionHelper dao = new CompetitionHelper();
-		request.setAttribute("allEntries", dao.showCompetitionRoster());
-		if (dao.showCompetitionRoster().isEmpty()) {
-			request.setAttribute("allEntries", " ");
+		request.setAttribute("allItems", dao.showAllCompetition());
+		
+		if (dao.showAllCompetition().isEmpty()) {
+			request.setAttribute("allItems", " ");
 		}
-
+		
+		System.out.println("List from viewAllCompetition servlet");
+		for(Competition c: dao.showAllCompetition()) {
+			System.out.println(c.toString()); 
+		}
+		
 		getServletContext().getRequestDispatcher("/viewAllCompetitions.jsp").forward(request, response);
 	}
 

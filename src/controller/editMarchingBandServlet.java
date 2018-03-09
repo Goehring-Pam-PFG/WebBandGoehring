@@ -40,9 +40,11 @@ public class editMarchingBandServlet extends HttpServlet {
 		MarchingBandHelper dao = new MarchingBandHelper();
 		
 		String bandName = request.getParameter("bandName");
+		System.out.println(bandName);
 		String bandLocation = request.getParameter("bandLocation");
 		String members = request.getParameter("numOfMembers");
-		String typesOfProps = request.getParameter("Type of Props"); 
+		String typesOfProps = request.getParameter("TypeofProps"); 
+		System.out.println("Type of Props: " + typesOfProps);
 		//String hasPropsStr = request.getParameter("Has props");
 		//String hasColorGuardStr = request.getParameter("Has colorguard"); 
 

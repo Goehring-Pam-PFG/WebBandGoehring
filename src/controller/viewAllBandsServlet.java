@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Band;
+
 /**
  * Servlet implementation class viewAllBandsServlet
  */
@@ -32,6 +34,9 @@ public class viewAllBandsServlet extends HttpServlet {
 		if(dao.showAllBands().isEmpty()) {
 			request.setAttribute("allBands", " ");
 		}
+//		for(Band b: dao.showAllBands()) {
+//			System.out.println(b.toString());
+//		}
 		
 		getServletContext().getRequestDispatcher("/viewAllConcertBands.jsp").forward(request, response);
 	}

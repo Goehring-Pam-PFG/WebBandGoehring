@@ -26,6 +26,7 @@ public class Band {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "band_id")
 	protected int bandId;
+	
 	@Column(name = "num_of_members")
 	private int numOfMembers;
 	@Column(name = "name_of_band")
@@ -34,13 +35,16 @@ public class Band {
 	private String bandLocation;
 	@Column(name = "cost_of_participation")
 	protected double costOfParticipation;
+	
 	@Column(name = "level_of_band")
 	private int levelBandId;
 	@Column(name = "band_type")
 	private String bandType;
+	
 	@Transient
 	//@Convert(converter = BandLevelAttributeConverter.class)
 	private String bandLevel;
+	
 	@Transient
 	private double quantityDiscount;
 	@Transient
@@ -92,7 +96,7 @@ public class Band {
 		setNumOfMembers(numOfMembers);
 		this.bandName = bandName;
 		setBandLocation(bandLocation);
-		//this.bandLocation = bandLocation;
+		this.bandLocation = bandLocation;
 		setLevelBandId(levelBandId);
 	}
 
@@ -128,6 +132,11 @@ public class Band {
 		} else {
 			minNumBusNeeded = 1;
 		}
+	}
+
+	
+	public int getLevelBandId() {
+		return levelBandId;
 	}
 
 	public String getBandName() {
@@ -184,7 +193,7 @@ public class Band {
 	@Override
 	public String toString() {
 		return "Band [numOfMembers=" + numOfMembers + ", bandName=" + bandName + ", bandLocation=" + bandLocation
-				+ ", costOfParticipation=" + this.costOfParticipation + ", bandLevel=" + bandLevel + "]";
+				+ ", costOfParticipation=" + this.costOfParticipation + ", levelBandId=" + levelBandId + "]";
 	}
 
 	public String bandDetails() {

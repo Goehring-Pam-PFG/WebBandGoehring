@@ -23,10 +23,10 @@ public class CompetitionTester {
 	}
 	
 	private static void viewCompetitionRoster() {
-		List<Competition> allItems = ch.showCompetitionRoster();
+		List<Competition> allItems = ch.showAllCompetition();
 		System.out.println("---------------------------------------------------------------------------------------------------------");
 		for (Competition roster : allItems) {
-			System.out.println(roster.returnCompetitionDetails());
+			System.out.println(roster.toString());
 		}
 	}
 
