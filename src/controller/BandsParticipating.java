@@ -35,7 +35,7 @@ public class BandsParticipating {
 		bandList.add(newBand);
 	}
 
-	public String displayParticipants() {
+	/*public String displayParticipants() {
 		String participants = eventName.toUpperCase() + "\n";
 
 		for (Band band : bandList) {
@@ -45,5 +45,5 @@ public class BandsParticipating {
 		participants = participants + "\n";
 
 		return "-----------------------------------------------------\n" + participants;
-	}
+	}*/
 }

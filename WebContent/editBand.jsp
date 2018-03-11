@@ -5,14 +5,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="myStyle.css">
+<title>Edit Concert Band</title>
 </head>
 <body>
+<h2>Edit a Concert Band</h2>
 <form action = "editBandServlet" method="post">
-Band Name: <input type="text" name="bandName" value="${bandToEdit.bandName}">
-Band Location: <input type="text" name="bandLocation" value="${bandToEdit.bandLocation}">
-Number of Members: <input type="text" name="numOfMembers" value="${bandToEdit.numOfMembers}">
+Band Name: <input type="text" name="bandName" value="${bandToEdit.bandName}"><br />
+Band Location: <input type="text" name="bandLocation" value="${bandToEdit.bandLocation}"> <br />
+Number of Members: <input type="text" name="numOfMembers" value="${bandToEdit.numOfMembers}"> <br />
+Band Level: 
+<input type="radio" name="level" value="1"> Elementary
+<input type="radio" name="level" value="2"> Junior High
+<input type="radio" name="level" value="3"> High School
+<br />
 <input type="hidden" name="id" value="${bandToEdit.bandId}">
+<br />
 <input type="submit" value="Save Edited Band">
 </form>
 </body>

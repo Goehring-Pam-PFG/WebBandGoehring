@@ -2,17 +2,20 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add a Band</title>
+<link rel="stylesheet" type="text/css" href="myStyle.css">
+<title>Add a Concert Band</title>
 </head>
 <body>
-<h2>Add a Band</h2>
+<h2>Add a Concert Band</h2>
 <form action ="addBandServlet" method="post">
 Band Name: <input type = "text" name = "bandName"><br />
 Band Location: <input type = "text" name = "bandLocation"><br />
 Number of Members: <input type = "text" name = "numOfMembers"><br />
-Band Level: <input type="radio" name="level" value="1"> Elementary
+Band Level: 
+<input type="radio" name="level" value="1"> Elementary
 <input type="radio" name="level" value="2"> Junior High
 <input type="radio" name="level" value="3"> High School
+<br />
 <input type = "submit" value = "Add Band">
 </form>
 <a href = "index.html"> Back to Band Home</a><br />

@@ -26,7 +26,6 @@ public class Band {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "band_id")
 	protected int bandId;
-	
 	@Column(name = "num_of_members")
 	private int numOfMembers;
 	@Column(name = "name_of_band")
@@ -35,25 +34,31 @@ public class Band {
 	private String bandLocation;
 	@Column(name = "cost_of_participation")
 	protected double costOfParticipation;
-	
 	@Column(name = "level_of_band")
 	private int levelBandId;
+	//differentiates whether the band is basic, pep or marching
 	@Column(name = "band_type")
 	private String bandType;
 	
 	@Transient
-	//@Convert(converter = BandLevelAttributeConverter.class)
-	private String bandLevel;
+	private String levelOfBand;
 	
 	@Transient
 	private double quantityDiscount;
 	@Transient
 	protected int minNumBusNeeded;
-
+	@Transient
+	final double ELEMENTARY_COST = 25.00;
 	@Transient
 	final double JUNIOR_HIGH_COST = 50.00;
 	@Transient
 	final double HIGH_SCHOOL_COST = 100.00;
+	@Transient
+	final int ELEMENTARY_LEVEL_ID = 1;
+	@Transient
+	final int JUNIOR_HIGH_LEVEL_ID = 2;
+	@Transient
+	final int HIGH_SCHOOL_LEVEL_ID = 3;
 
 	@Transient
 	DecimalFormat df = new DecimalFormat("$##0.00");
@@ -72,8 +77,8 @@ public class Band {
 		this.numOfMembers = numOfMembers;
 		this.bandName = bandName;
 		this.bandLocation = bandLocation;
-		this.costOfParticipation = costOfParticipation;
 		this.levelBandId = levelBandId;
+		this.costOfParticipation = calcCostOfParticipation(numOfMembers,levelBandId);
 	}
 
 	public Band(int numOfMembers, String bandName, String bandLocation) {
@@ -83,21 +88,13 @@ public class Band {
 		this.bandLocation = bandLocation;
 	} 
 
-	/*public Band(int numOfMembers, String bandName, String bandLocation, String bandLevel) {
-		super();
-		setNumOfMembers(numOfMembers);
-		this.bandName = bandName;
-		this.bandLocation = bandLocation;
-		setBandLevel(bandLevel);
-	} */
-
 	public Band(int numOfMembers, String bandName, String bandLocation, int levelBandId) {
 		super();
 		setNumOfMembers(numOfMembers);
 		this.bandName = bandName;
 		setBandLocation(bandLocation);
-		this.bandLocation = bandLocation;
 		setLevelBandId(levelBandId);
+		this.costOfParticipation = calcCostOfParticipation(numOfMembers,levelBandId);
 	}
 
 	public int getMinNumBusNeeded() {
@@ -107,33 +104,78 @@ public class Band {
 	public int getNumOfMembers() {
 		return numOfMembers;
 	}
+	
+	public void setNumOfMembers(int numOfMembers) {
+		this.numOfMembers = numOfMembers;
+	}
 
 	// assigns discount for qty of members
 	// assigns # of buses needed for event
-	public void setNumOfMembers(int numOfMembers) {
+//	public void setNumOfMembers(int numOfMembers) {
+//		final int MIN_NUM_MEMBERS_QTY_DISCOUNT = 25;
+//		final int DISCOUNT_100 = 100;
+//		final double DISCOUNT_HIGH = 15.00;
+//		final double DISCOUNT_LOW = 5.50;
+//		final int MAX_MEMBERS_PER_BUS = 30;
+//
+//		this.numOfMembers = numOfMembers;
+//
+//		if (this.numOfMembers < MIN_NUM_MEMBERS_QTY_DISCOUNT) {
+//			quantityDiscount = 0;
+//		} else if (this.numOfMembers >= DISCOUNT_100) {
+//			quantityDiscount = DISCOUNT_HIGH;
+//		} else {
+//			quantityDiscount = DISCOUNT_LOW;
+//		}
+//
+//		if (this.numOfMembers > MAX_MEMBERS_PER_BUS) {
+//			minNumBusNeeded = (numOfMembers + MAX_MEMBERS_PER_BUS - 1) / MAX_MEMBERS_PER_BUS;
+//		} else {
+//			minNumBusNeeded = 1;
+//		}
+//	}
+
+	/*
+	 * Method assigns discount for number of members
+	 * Also sets the discount per level of band
+	 */
+	private double calcCostOfParticipation(int numOfMembers, int levelBandId) {
+		System.out.println("I'm in the method");
 		final int MIN_NUM_MEMBERS_QTY_DISCOUNT = 25;
 		final int DISCOUNT_100 = 100;
 		final double DISCOUNT_HIGH = 15.00;
 		final double DISCOUNT_LOW = 5.50;
 		final int MAX_MEMBERS_PER_BUS = 30;
-
-		this.numOfMembers = numOfMembers;
-
-		if (this.numOfMembers < MIN_NUM_MEMBERS_QTY_DISCOUNT) {
-			quantityDiscount = 0;
-		} else if (this.numOfMembers >= DISCOUNT_100) {
-			quantityDiscount = DISCOUNT_HIGH;
-		} else {
-			quantityDiscount = DISCOUNT_LOW;
-		}
-
-		if (this.numOfMembers > MAX_MEMBERS_PER_BUS) {
-			minNumBusNeeded = (numOfMembers + MAX_MEMBERS_PER_BUS - 1) / MAX_MEMBERS_PER_BUS;
-		} else {
-			minNumBusNeeded = 1;
-		}
+		
+		System.out.println("members " + numOfMembers);
+		
+			//calculates discounts based on member count
+			if (this.numOfMembers < MIN_NUM_MEMBERS_QTY_DISCOUNT) {
+				quantityDiscount = 0;
+			} else if (this.numOfMembers > DISCOUNT_100) {
+				quantityDiscount =  DISCOUNT_HIGH;
+			} else {
+				quantityDiscount = DISCOUNT_LOW;
+			}
+			
+			//calculates number of buses needed
+			if (this.numOfMembers > MAX_MEMBERS_PER_BUS) {
+				minNumBusNeeded = (numOfMembers + MAX_MEMBERS_PER_BUS - 1) / MAX_MEMBERS_PER_BUS;
+			} else {
+				minNumBusNeeded = 1;
+			}
+			
+			//calculates cost of participation
+			Double totalCostOfParticipation;
+			if (this.levelBandId == ELEMENTARY_LEVEL_ID) {
+				totalCostOfParticipation = 0.0;
+			} else if (this.levelBandId == JUNIOR_HIGH_LEVEL_ID) {
+				totalCostOfParticipation = JUNIOR_HIGH_COST - quantityDiscount;
+			} else {
+				totalCostOfParticipation = HIGH_SCHOOL_COST - quantityDiscount;
+			}
+			return totalCostOfParticipation;
 	}
-
 	
 	public int getLevelBandId() {
 		return levelBandId;
@@ -158,10 +200,14 @@ public class Band {
 	public double getCostOfParticipation() {
 		return costOfParticipation;
 	}
-
-	public String getBandLevel() {
-		return bandLevel;
+	
+	public void setCostOfParticipation(int numOfMembers, int levelBandId) {
+		this.costOfParticipation = calcCostOfParticipation(numOfMembers,levelBandId);
 	}
+
+//	public String getBandLevel() {
+//		return bandLevel;
+//	}
 	
 
 	public int getBandId() {
@@ -183,11 +229,23 @@ public class Band {
 
 	public void setLevelBandId(int levelBandId) {
 		this.levelBandId = levelBandId;
-		if (this.levelBandId == 3) {
-			this.costOfParticipation = HIGH_SCHOOL_COST - quantityDiscount;
+	}
+	
+	public String getLevelOfBand() {
+		String levelOfBandDesc;
+		if (this.levelBandId == ELEMENTARY_LEVEL_ID) {
+			levelOfBandDesc = "Elementary";
+		} else if (this.levelBandId == JUNIOR_HIGH_LEVEL_ID) {
+			levelOfBandDesc = "Junior School";
 		} else {
-			this.costOfParticipation = JUNIOR_HIGH_COST - quantityDiscount;
+			levelOfBandDesc = "High School";
 		}
+		return levelOfBandDesc;
+		
+	}
+	
+	public void setLevelOfBand(String levelOfBand) {
+		this.levelOfBand = levelOfBand;
 	}
 
 	@Override
@@ -198,7 +256,7 @@ public class Band {
 
 	public String bandDetails() {
 		return "------------------------------------\nBand Name: " + this.bandName + "\nCategory: "
-				+ this.getBandLevel() + "\nBand Location: " + this.bandLocation + "\n# of Members: "
+				+ this.getLevelOfBand() + "\nBand Location: " + this.bandLocation + "\n# of Members: "
 				+ this.numOfMembers + "\nParticipation Cost: " + df.format(costOfParticipation);
 	}
 	
@@ -214,15 +272,16 @@ public class Band {
 		return String.format("%-5s %-15s %-15s %10s %15s", bandId, bandName.toUpperCase(), bandLocation.toUpperCase(), getNumOfMembers(), bandLevelDescription);
 	}
 
-	public String show() {
-		String displayLevel = "";
-		if (bandLevel.equalsIgnoreCase("HS")) {
-			displayLevel = "HIGH SCHOOL BAND";
-		} else if (bandLevel.equalsIgnoreCase("JH")) {
-			displayLevel = "JUNIOR HIGH SCHOOL BAND";
-		}
-		return String.format("%-15s %-15s %-15s", "BAND NAME", "LOCATION", "BAND LEVEL") + "\n"
-				+ String.format("%-15s %-15s %-15s", bandName, bandLocation, displayLevel);
-	}
+
+//	public String show() {
+//		String displayLevel = "";
+//		if (bandLevel.equalsIgnoreCase("HS")) {
+//			displayLevel = "HIGH SCHOOL BAND";
+//		} else if (bandLevel.equalsIgnoreCase("JH")) {
+//			displayLevel = "JUNIOR HIGH SCHOOL BAND";
+//		}
+//		return String.format("%-15s %-15s %-15s", "BAND NAME", "LOCATION", "BAND LEVEL") + "\n"
+//				+ String.format("%-15s %-15s %-15s", bandName, bandLocation, displayLevel);
+//	}
 
 }

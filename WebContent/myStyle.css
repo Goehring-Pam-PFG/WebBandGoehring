@@ -1,10 +1,10 @@
 @charset "ISO-8859-1";
 body {
-    background-color: #f0f8ff;
+    background-color: #cdcde7;
 }
 
 h1 {
-    color: navy;
+    color: #0080c0;
     margin-left: 20px;
 }
 
@@ -17,4 +17,11 @@ img {
     border-radius: 50%;
     padding: 5px;
     width: 150px;
+}
+
+table, td, th {
+	border: 1px solid #ffffff;
+	border-collapse: separate;
+	border-spacing: 2px;
+	padding: 2px;
 }

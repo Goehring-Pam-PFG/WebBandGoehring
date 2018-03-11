@@ -12,6 +12,7 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/finearts?autoReconnect=true&amp;useSSL=false"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
 			<property name="javax.persistence.jdbc.password" value="java1718"/>
+			<property name="eclipselink.logging.file" value="C:\Users\Java User\eclipse-workspace\WebBandGoehring\errorlog.txt"/>
 		</properties>
 	</persistence-unit>
 </persistence>

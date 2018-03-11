@@ -37,19 +37,27 @@ public class editBandServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		BandHelper dao = new BandHelper();
 		
 		String bandName = request.getParameter("bandName");
 		String bandLocation = request.getParameter("bandLocation");
-		String members = request.getParameter("numOfMembers");
+		//String members = request.getParameter("numOfMembers");
 
-		int numOfMembers = Integer.valueOf(members);
+		Integer numOfMembers = Integer.parseInt(request.getParameter("numOfMembers"));
+		Integer levelOfBand = Integer.parseInt(request.getParameter("level"));
+		
+		//String stringLevelOfBand = request.getParameter("levelBandId");
+		//int levelBandId = Integer.valueOf(stringLevelOfBand);
+		
 		Integer tempId = Integer.parseInt(request.getParameter("id"));
 		
 		Band bandToUpdate = dao.searchForBandById(tempId);
 		bandToUpdate.setBandName(bandName);
 		bandToUpdate.setBandLocation(bandLocation);
 		bandToUpdate.setNumOfMembers(numOfMembers);
+		bandToUpdate.setLevelBandId(levelOfBand);;
+		bandToUpdate.setCostOfParticipation(numOfMembers, levelOfBand);
 		
 		dao.updateBand(bandToUpdate);
 		

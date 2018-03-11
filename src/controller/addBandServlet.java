@@ -30,8 +30,8 @@ public class addBandServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String bandName = request.getParameter("bandName");
-		String bandLocation = request.getParameter("bandLocation");
 		String members = request.getParameter("numOfMembers");
+		String bandLocation = request.getParameter("bandLocation");
 		String level = request.getParameter("level");
 		
 		int numOfMembers = Integer.valueOf(members);

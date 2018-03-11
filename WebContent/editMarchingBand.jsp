@@ -5,15 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="myStyle.css">
 <title>Edit Marching Band</title>
 </head>
 <body>
+<h2>Edit a Marching Band</h2>
 <form action = "editMarchingBandServlet" method="post">
 
-Band Name: <input type="text" name="bandName" value="${marchingBandToEdit.bandName}">
-Band Location: <input type="text" name="bandLocation" value="${marchingBandToEdit.bandLocation}">
-Number of Members: <input type="text" name="numOfMembers" value="${marchingBandToEdit.numOfMembers}">
-Types of Props: <input type="text" name="TypeofProps" value="${marchingBandToEdit.typesOfProps}"> 
+Band Name: <input type="text" name="bandName" value="${marchingBandToEdit.bandName}"><br />
+Band Location: <input type="text" name="bandLocation" value="${marchingBandToEdit.bandLocation}"><br />
+Number of Members: <input type="text" name="numOfMembers" value="${marchingBandToEdit.numOfMembers}"><br />
+Types of Props: <input type="text" name="TypeofProps" value="${marchingBandToEdit.typesOfProps}"> <br />
 
 <input type="hidden" name="id" value="${marchingBandToEdit.bandId}">
 <input type="submit" value="Save Edited Marching Band">
