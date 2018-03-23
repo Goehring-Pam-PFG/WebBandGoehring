@@ -32,19 +32,6 @@ public class BandHelper {
 		return allBands;
 
 	}
-	
-	/* public List<Band> showAllBands() {
-		EntityManager em = emfactory.createEntityManager();
-		// creates the query but does not execute it.
-		TypedQuery<Band> allResults = em.createQuery("Select list_item from Band list_item", Band.class);
-		// Selects the info
-		List<Band> allBands = allResults.getResultList();
-		// need to close the entity manager
-		em.close();
-
-		return allBands;
-
-	} */
 
 	public void deleteBand(Band toDelete) {
 		EntityManager em = emfactory.createEntityManager();

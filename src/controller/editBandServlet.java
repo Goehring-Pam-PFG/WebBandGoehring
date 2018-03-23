@@ -45,10 +45,10 @@ public class editBandServlet extends HttpServlet {
 		//String members = request.getParameter("numOfMembers");
 
 		Integer numOfMembers = Integer.parseInt(request.getParameter("numOfMembers"));
-		Integer levelOfBand = Integer.parseInt(request.getParameter("level"));
+		//Integer levelOfBand = Integer.parseInt(request.getParameter("level"));
 		
-		//String stringLevelOfBand = request.getParameter("levelBandId");
-		//int levelBandId = Integer.valueOf(stringLevelOfBand);
+		String stringLevelOfBand = request.getParameter("levelBandId");
+		int levelBandId = Integer.valueOf(stringLevelOfBand);
 		
 		Integer tempId = Integer.parseInt(request.getParameter("id"));
 		
@@ -56,8 +56,10 @@ public class editBandServlet extends HttpServlet {
 		bandToUpdate.setBandName(bandName);
 		bandToUpdate.setBandLocation(bandLocation);
 		bandToUpdate.setNumOfMembers(numOfMembers);
-		bandToUpdate.setLevelBandId(levelOfBand);;
-		bandToUpdate.setCostOfParticipation(numOfMembers, levelOfBand);
+		bandToUpdate.setLevelBandId(levelBandId);
+		//bandToUpdate.setLevelBandId(levelOfBand);;
+		//bandToUpdate.setCostOfParticipation(numOfMembers, intLevel);
+		bandToUpdate.setCostOfParticipation(numOfMembers, levelBandId);
 		
 		dao.updateBand(bandToUpdate);
 		
